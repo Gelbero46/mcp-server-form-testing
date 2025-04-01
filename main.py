@@ -224,7 +224,7 @@ async def fill_form(url: str, form_data: Dict[str, Any], ctx: Context) -> Dict[s
                 results["confirmation_messages"] = confirmation_texts
                 ctx.info(f"Found confirmation messages: {confirmation_texts}")
             
-            input("Enter to continue ...")
+            # input("Enter to continue ...")
             await browser.close()
             
             # Set success based on whether we had errors

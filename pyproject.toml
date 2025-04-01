@@ -16,3 +16,6 @@ dependencies = [
     "python-decouple>=3.8",
     "python-dotenv>=1.1.0",
 ]
+
+[tool.uv.workspace]
+members = ["mcp-client"]

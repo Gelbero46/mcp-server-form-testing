@@ -8,5 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+
 .playground
 .env
+mcp-client
