@@ -8,9 +8,11 @@ from langchain_core.prompts import ChatPromptTemplate
 import os
 import re
 from bs4 import BeautifulSoup
+import httpx
+
 
 # Create an MCP server
-mcp = FastMCP("BrowserFormFiller")
+# mcp = FastMCP("BrowserFormFiller")
 mcp = FastMCP("BrowserFormFiller", dependencies=["playwright", "langchain", "langchain_openai", "beautifulsoup4"])
 USER_AGENT="form-automate-app/1.0"
 
@@ -61,6 +63,7 @@ form_filling_prompt = ChatPromptTemplate.from_template("""
     For select dropdowns, provide the visible text of the option to select.
 """
 )
+
 
 @mcp.tool()
 async def fill_form(url: str, form_data: Dict[str, Any], ctx: Context) -> Dict[str, Any]:
@@ -241,4 +244,4 @@ async def fill_form(url: str, form_data: Dict[str, Any], ctx: Context) -> Dict[s
 
 # If running directly, start the server
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport='stdio')
